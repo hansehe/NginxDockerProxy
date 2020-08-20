@@ -1,0 +1,36 @@
+changelog:
+    file: CHANGELOG.md
+    envKey: VERSION
+
+run:
+    selections:
+        container:
+            directory: src
+            files:
+                - docker-compose.yml
+
+build:
+    selections:
+        container:
+            directory: src
+            additionalTag: latest
+            files:
+                - docker-compose.yml
+
+test:
+    selections:
+        container:
+            directory: src
+            removeContainers: true
+            containerNames:
+                - nginx-docker-proxy-test
+            files:
+                - docker-compose.test.yml
+
+publish:
+    selections:
+        container:
+            directory: src
+            additionalTag: latest
+            files:
+                - docker-compose.yml

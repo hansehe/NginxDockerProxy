@@ -1,0 +1,30 @@
+changelog:
+    file: CHANGELOG.md
+    envKey: VERSION
+
+run:
+    selections:
+        container:
+            files:
+                - docker-compose.yml
+
+build:
+    selections:
+        container:
+            additionalTag: latest
+            files:
+                - docker-compose.yml
+
+publish:
+    selections:
+        container:
+            additionalTag: latest
+            files:
+                - docker-compose.yml
+
+swarm:
+    selections:
+        dev:
+            directory: ServiceDependencies
+            files:
+                - swarm-management.yml

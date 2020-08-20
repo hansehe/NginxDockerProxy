@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+    nginx-docker-proxy-example:
+        image: nginx-docker-proxy-example:${VERSION}
+        hostname: nginx-docker-proxy-example
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            - STATUS__HEALTH__URL=/status/health
+            - RABBITMQ__ADMIN__PATH=/
+            - RABBITMQ__ADMIN__HTTPSCHEME=http
+            - RABBITMQ__ADMIN__HOSTNAME=rabbitmq
+            - RABBITMQ__ADMIN__PORT=15672
+            - MQTT__WSPATH=/ws
+            - MQTT__HTTPSCHEME=http
+            - MQTT__HOSTNAME=rabbitmq
+            - MQTT__WSPORT=15675
+        ports:
+            - 8080:80
+        networks:
+            - backend_network
+
+networks:
+  backend_network:
+    external: true

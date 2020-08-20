@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+    nginx-docker-proxy-test:
+        container_name: nginx-docker-proxy-test
+        image: nginx-docker-proxy.test
+        build:
+            context: .
+            dockerfile: Test.Dockerfile

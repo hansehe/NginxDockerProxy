@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  # username and password is: amqp/amqp
+  rabbitmq:
+    image: hansehe/rabbitmq-mqtt:latest
+    hostname: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+      - 15675:15675
+      - 1883:1883
+    networks:
+      - backend_network
+
+networks:
+  backend_network:
+    external: true
